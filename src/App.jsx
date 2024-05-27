@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Todos from "./Components/todos"
+import FooterTodo from "./Components/footerTodo"
 import './App.css'
 
 //TODOS  de mentira para las pruebas
@@ -23,6 +24,7 @@ const mockTodo = [
 
 function App() {
   const [todos,setTodos] = useState(mockTodo)
+  const [filterSelected, setFilterSelected] = useState('all')
 
   const handleDeleteTodo = (id) => {
     const newTodos = todos.filter( todo => todo.id !== id)
@@ -44,6 +46,16 @@ function App() {
     setTodos(newTodo)
   }
 
+  const handleFilterChange = (filter)=>{
+    console.log(filter)
+  }
+
+  const handleClearComplete = () => {
+    const newTodos = todos.filter((todo)=>!todo.completed)
+    setTodos(newTodos)
+  }
+  const activeCount = todos.filter((todo) => !todo.completed).length
+  const completeCount = todos.length - activeCount
 
   return (
     <div className="toodApp">
@@ -52,6 +64,12 @@ function App() {
       onDeleteTodo={handleDeleteTodo}
       onToggleCompleted={handleCompleted}
       todos={todos}/>
+      <FooterTodo 
+      activeCount={activeCount}
+      completeCount={completeCount}
+      filterSelected={filterSelected}
+      onClearCompleted={handleClearComplete}
+      handleFilterChange={handleFilterChange}/>
     </div>
   )
 }

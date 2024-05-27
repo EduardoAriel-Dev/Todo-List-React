@@ -2,21 +2,31 @@ import Filters from "../filters"
 
 const FooterTodo = (
     { 
-     activeCount = 0,
-     completedCount = 0,
+     activeCount,
+     completedCount,
+     filterSelected,
      onClearCompleted,
-     filterSelected
+     handleFilterChange
     })=> {
     return (
         <footer className="footer">
             <span className="todo-count">
-                <strong>{activeCount.length}</strong> Todos Completeds
+                <strong>{activeCount}</strong> Todos Activos
             </span>
 
             <Filters
                 filterSelected={filterSelected}
-                onFilterChange={()=>{}}
+                onFilterChange={handleFilterChange}
             />
+
+            {completedCount>0 && (
+                <button
+                    className="btnComplete"
+                    onClick={onClearCompleted}
+                >
+                    Borrar completados
+                </button>
+            )}
         </footer>
     )
 }
