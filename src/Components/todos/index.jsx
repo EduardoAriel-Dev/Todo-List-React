@@ -1,7 +1,7 @@
 import TodoItem from "../todoItem";
 import './style.css'
 
-const Todos = ({todos,onDeleteTodo,onToggleCompleted})=>{
+const Todos = ({todos,onDeleteTodo,onToggleCompleted,onEditTodoTitle})=>{
     return(
         <ul className="todo-list">
             {todos.map(todo => (
@@ -14,6 +14,7 @@ const Todos = ({todos,onDeleteTodo,onToggleCompleted})=>{
                     completed={todo.completed}
                     onDeleteTodo={onDeleteTodo}
                     onToggleCompletedTodo={onToggleCompleted}
+                    onEditTitle={onEditTodoTitle}
                 />
             </li>))}
         </ul>

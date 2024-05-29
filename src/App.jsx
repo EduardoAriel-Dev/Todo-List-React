@@ -76,7 +76,14 @@ function App() {
     setTodos(newTODOS)
   }
 
-  
+  const handleEditTodoTitle = (id,title) => {
+    const newTodos = todos.fill((todo) => {
+      if(todo.id === id){
+        todo.title = title
+      }
+      setTodos(newTodos)
+    })
+  }
 
   return (
     <div className="toodApp">
@@ -84,13 +91,15 @@ function App() {
       <Todos 
       onDeleteTodo={handleDeleteTodo}
       onToggleCompleted={handleCompleted}
-      todos={handleFilterTODO}/>
+      todos={handleFilterTODO}
+      onEditTodoTitle={handleEditTodoTitle}/>
       <FooterTodo 
       activeCount={activeCount}
       completedCount={completeCount}
       filterSelected={filterSelected}
       onClearCompleted={handleClearComplete}
-      handleFilterChange={handleFilterChange}/>
+      handleFilterChange={handleFilterChange}
+      />
     </div>
   )
 }
