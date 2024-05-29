@@ -7,7 +7,7 @@ const FooterTodo = (
      filterSelected,
      onClearCompleted,
      handleFilterChange
-    })=> {
+    }) => {
     return (
         <footer className="footer">
             <span className="todo-count">
@@ -19,7 +19,7 @@ const FooterTodo = (
                 onFilterChange={handleFilterChange}
             />
 
-            {completedCount>0 && (
+            {completedCount > 0 && (
                 <button
                     className="btnComplete"
                     onClick={onClearCompleted}

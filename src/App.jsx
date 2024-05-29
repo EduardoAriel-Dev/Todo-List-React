@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Todos from "./Components/todos"
 import FooterTodo from "./Components/footerTodo"
+import Header from "./Components/header/header"
 import './App.css'
 
 //TODOS  de mentira para las pruebas
@@ -47,8 +48,16 @@ function App() {
   }
 
   const handleFilterChange = (filter)=>{
+    setFilterSelected(filter)
     console.log(filter)
   }
+
+  const handleFilterTODO = todos.filter(todo => {
+    if(filterSelected === 'active') return !todo.completed
+    if(filterSelected === 'completed') return todo.completed
+    return todo
+  })
+
 
   const handleClearComplete = () => {
     const newTodos = todos.filter((todo)=>!todo.completed)
@@ -57,16 +66,28 @@ function App() {
   const activeCount = todos.filter((todo) => !todo.completed).length
   const completeCount = todos.length - activeCount
 
+  const handelAddTODO = (title)=>{
+    const newTODO = {
+      id: crypto.randomUUID(),//Crea un ID Random
+      title,
+      completed: false
+    }
+    const newTODOS = [...todos,newTODO]
+    setTodos(newTODOS)
+  }
+
+  
+
   return (
     <div className="toodApp">
-      <h1>TODO LIST:</h1>
+      <Header addTodo={handelAddTODO}/>
       <Todos 
       onDeleteTodo={handleDeleteTodo}
       onToggleCompleted={handleCompleted}
-      todos={todos}/>
+      todos={handleFilterTODO}/>
       <FooterTodo 
       activeCount={activeCount}
-      completeCount={completeCount}
+      completedCount={completeCount}
       filterSelected={filterSelected}
       onClearCompleted={handleClearComplete}
       handleFilterChange={handleFilterChange}/>
