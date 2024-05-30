@@ -1,3 +1,5 @@
+import './style.css'
+
 const Filters = ({filterSelected,onFilterChange}) =>{
     return(
         <ul className="filters">

@@ -22,6 +22,7 @@ const createTodos = ({newTodo}) => {
     return(
         <form onSubmit={handleSumit}>
             <input type="text" 
+            className="new-todo"
             placeholder="crea tu nuevo TODO....." 
             value={value}
             onChange={handleChangeValue}

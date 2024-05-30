@@ -1,0 +1,16 @@
+.headerTitle{
+    display: flex;
+}
+.headerTitle h1{
+    margin: 0px 5px;
+    text-align: center;
+    align-content: center;
+    font-family: "Teko", sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+    font-style: normal;
+}
+.logoImg{
+    width: 80px;
+    height: 80px;
+}

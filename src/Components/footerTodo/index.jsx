@@ -1,4 +1,5 @@
 import Filters from "../filters"
+import './style.css'
 
 const FooterTodo = (
     { 
@@ -18,10 +19,10 @@ const FooterTodo = (
                 filterSelected={filterSelected}
                 onFilterChange={handleFilterChange}
             />
-
+            
             {completedCount > 0 && (
                 <button
-                    className="btnComplete"
+                    className="clear-completed"
                     onClick={onClearCompleted}
                 >
                     Borrar completados

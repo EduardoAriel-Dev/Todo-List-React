@@ -7,7 +7,7 @@ const Todos = ({todos,onDeleteTodo,onToggleCompleted,onEditTodoTitle})=>{
             {todos.map(todo => (
             <li 
                 key={todo.id} 
-                className={`${todo.completed ? 'completed' : 'notCompleted'}`}>
+                className={`${todo.completed ? 'completed' : ''}`}>
                 <TodoItem 
                     id={todo.id}
                     title={todo.title}
