@@ -47,6 +47,10 @@
 	transition: color 0.4s;
 	font-weight: 400;
 	color: #dad6d6;
+	max-width: 200px; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .todo-list li.completed label {

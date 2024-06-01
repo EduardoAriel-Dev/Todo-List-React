@@ -77,15 +77,15 @@ function App() {
   }
 
   const handleEditTodoTitle = (id,title) => {
-    console.log(title)
-    const newTodos = todos.map((todo) => {
-      
-      if(todo.id === id){
-        return {...todos,title:title}
+    todos.map((elemt,index) => {
+      if(elemt.id === id){
+        //todos[index] == {...todos,todos[index]{elemt.title}}
+        console.log(todos)
+        todos[index].title = title
+        console.log(todos)
+        setTodos(todos)
       }
-        return todos
     })
-    setTodos(newTodos)
   }
 
   return (

@@ -4,7 +4,7 @@ import './style.css'
 const TodoItem = ({id, title, completed, onDeleteTodo,onToggleCompletedTodo,onEditTitle})=>{
     const [newTitle, setNewTitle] = useState(title)
     const [editing,setEditing] = useState(false)
-
+    console.log(title)
     const handleCheckBox = (event)=>{
         onToggleCompletedTodo({
             id,
@@ -25,19 +25,10 @@ const TodoItem = ({id, title, completed, onDeleteTodo,onToggleCompletedTodo,onEd
         //Solo actualizamos el titulo si no esta vacio y si ha cambiado
         if(newTitle.trim() !== '' && newTitle !== title){
             onEditTitle(id, newTitle)
+            title = newTitle
+            console.log(title)
         }
     }
-    /*
-    const handleSumit = (event) => {
-        event.preventDefault();
-        if(!setNewTitle.trim()){
-            return;
-        }
-        newTodo(value)
-        setValue('')
-    }
-    */
-    
     return(
         <div className="todoItem">
             <input 
@@ -45,9 +36,17 @@ const TodoItem = ({id, title, completed, onDeleteTodo,onToggleCompletedTodo,onEd
               type="checkbox"
               checked={completed}
               onChange={handleCheckBox}/>
-
-              {/*editing ? (
-                <form onSubmit={handelSumit}>
+              
+              {/* <input type="text" 
+              className="new-todoEdit"
+              value={newTitle} 
+              onChange={handleTitleChange} 
+              onDoubleClick={handleCheckBox}
+              onBlur={handleTitleBlur}
+              disabled={editing}>
+              </input> */}
+              {editing ? (
+                
                     <input
                     className="new-todoEdit"
                     type="text"
@@ -56,12 +55,10 @@ const TodoItem = ({id, title, completed, onDeleteTodo,onToggleCompletedTodo,onEd
                     onBlur={handleTitleBlur}//Este evento se dispara cuando un elemento pierde el foco, es decir, cuando el usuario deja de interactuar con él.
                     autoFocus//Este atributo se utiliza para indicar que un elemento debe recibir automáticamente el foco cuando la página se carga
                     />
-                </form>
                 ):
                 (
-                <label onDoubleClick={handleDoubleClick}>{title}</label>
-                )*/}
-                <label>{title}</label>
+                <label onDoubleClick={handleDoubleClick}>{newTitle}</label>
+                )}
             
             <button 
               className="detroy"

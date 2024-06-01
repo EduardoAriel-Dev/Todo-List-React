@@ -6,9 +6,10 @@ const Todos = ({todos,onDeleteTodo,onToggleCompleted,onEditTodoTitle})=>{
         <ul className="todo-list">
             {todos.map(todo => (
             <li 
-                key={todo.id} 
+                key={todo.id}
                 className={`${todo.completed ? 'completed' : ''}`}>
                 <TodoItem 
+                    
                     id={todo.id}
                     title={todo.title}
                     completed={todo.completed}
